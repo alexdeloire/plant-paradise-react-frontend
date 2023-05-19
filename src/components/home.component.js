@@ -36,7 +36,7 @@ export default class Home extends Component {
           <h1>Welcome to Plant Paradise!</h1>
           <p>Looking for a new hobby? In dire need of some gardening information? </p>
           <p>Plant Paradise is the right place for you! Explore the world of plants. What are you waiting for?</p>
-        <Link to={"/profile"} className="get-started">
+        <Link to={"/items"} className="get-started">
             Get Started
           </Link>
       </div>

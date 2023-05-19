@@ -127,6 +127,7 @@ export default class ItemsList extends Component {
     this.setState(
       {
         page: value,
+        currentIndex: -1,
       },
       () => {
         this.retrieveItems();
@@ -221,7 +222,7 @@ export default class ItemsList extends Component {
                 <li
                   className={
                     "list-group-item " +
-                    (index === currentIndex ? "active" : "")
+                    ((index === currentIndex || currentItem ? item.title === currentItem.title : false) ? "active" : "")
                   }
                   onClick={() => this.setActiveItem(item, index)}
                   key={index}
