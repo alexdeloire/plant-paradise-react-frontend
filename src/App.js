@@ -16,6 +16,8 @@ import AddItem from "./components/add-item.component";
 import Item from "./components/item.component";
 import ItemsList from "./components/items-list.component";
 import Footer from "./components/footer.component";
+import BiotopeList from "./components/biotopes-list.component";
+import FamiliesList from "./components/families-list.component";
 
 
 // import AuthVerify from "./common/auth-verify";
@@ -89,7 +91,7 @@ class App extends Component {
             {showModeratorBoard && (
               <li className="nav-item">
                 <Link to={"/mod"} className="nav-link">
-                  Moderator Board
+                  Mod
                 </Link>
               </li>
             )}
@@ -97,7 +99,7 @@ class App extends Component {
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                  Admin Board
+                  Admin
                 </Link>
               </li>
             )}
@@ -148,6 +150,8 @@ class App extends Component {
             <Route path="/items" element={<ItemsList/>} />
             <Route path="/add" element={<AddItem/>} />
             <Route path="/items/:id" element={<Item/>} />
+            <Route path="/biotopes" element={<BiotopeList/>} />
+            <Route path="/families" element={<FamiliesList/>} />
           </Routes>
         </div>
 

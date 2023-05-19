@@ -169,7 +169,7 @@ export default class ItemsList extends Component {
 
 
     return (
-      <div className = "wrapper-for-eveything">
+      <div className = "wrapper-for-everything">
       <div className="list row">
         <div className="col-md-8 search-plants">
           <div className="input-group mb-3">
@@ -261,7 +261,7 @@ export default class ItemsList extends Component {
                 <label>
                   <strong>Status:</strong>
                 </label>{" "}
-                {currentItem.published ? "Published" : "Pending"}
+                {currentItem.published ? "Verified" : "Pending"}
               </div>
 
               <Link
@@ -279,14 +279,28 @@ export default class ItemsList extends Component {
           )}
         </div>
       </div>
-      <div className="row add-new-item">
-         <div className="col-md-12 add-new-item-child">
+      <div className="row col-md-12 add-new-item">
+         <div className="col-md-4 add-new-item-child">
            <h4>Have a new plant to add?</h4>
            <Link to={"/add"} className="get-started">
              Add Plant
            </Link>
          </div>
+         <div className="col-md-4 add-new-item-child">
+           <h4>Need some info on biotopes?</h4>
+           <Link to={"/biotopes"} className="get-started">
+             See Biotopes
+           </Link>
+          </div>
+         <div className="col-md-4 add-new-item-child">
+           <h4>Check out the families?</h4>
+           <Link to={"/families"} className="get-started">
+             See Families
+           </Link>
+          </div>
        </div>
+       
+       
     </div>
     );
   }

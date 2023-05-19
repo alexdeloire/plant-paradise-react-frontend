@@ -262,7 +262,7 @@ export default class BoardAdmin extends Component {
                 <li
                   className={
                     "list-group-item " +
-                    (index === currentIndex ? "active" : "")
+                    ((index === currentIndex || currentUserSelected ? user.username === currentUserSelected.username : false) ? "active" : "")
                   }
                   onClick={() => this.setActiveItem(user, index)}
                   key={index}

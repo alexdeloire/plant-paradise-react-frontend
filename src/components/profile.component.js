@@ -33,10 +33,10 @@ export default class Profile extends Component {
         <div>
         <header className="jumbotron">
           <h3>
-            <strong>{currentUser.username}</strong> Profile
+            Good to see you <strong>{currentUser.username}</strong>! This is your profile
           </h3>
         </header>
-        <p>
+        {/*<p>
           <strong>Token:</strong>{" "}
           {currentUser.accessToken.substring(0, 20)} ...{" "}
           {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
@@ -45,6 +45,7 @@ export default class Profile extends Component {
           <strong>Id:</strong>{" "}
           {currentUser.id}
         </p>
+        */}
         <p>
           <strong>Email:</strong>{" "}
           {currentUser.email}

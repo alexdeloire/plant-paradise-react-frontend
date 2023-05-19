@@ -252,7 +252,7 @@ export default class BoardModerator extends Component {
                 <li
                   className={
                     "list-group-item " +
-                    (index === currentIndex ? "active" : "")
+                    ((index === currentIndex || currentItem ? item.title === currentItem.title : false) ? "active" : "")
                   }
                   onClick={() => this.setActiveItem(item, index)}
                   key={index}
