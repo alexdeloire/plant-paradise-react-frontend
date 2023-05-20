@@ -51,8 +51,9 @@ label {
 }
 
 .submit-form {
-  max-width: 300px;
+  max-width: 600px;
   margin: auto;
+  padding: 20px;
 }
 
 .edit-form {
@@ -212,6 +213,12 @@ label {
 
 .mainthing{
   min-height: 1500px;
+}
+
+.auto-resize-textarea {
+  resize: none; /* Disable manual resizing */
+  overflow: hidden; /* Hide any overflowing content */
+  min-height: 38px; /* Set a minimum height to prevent collapsing */
 }
 
 

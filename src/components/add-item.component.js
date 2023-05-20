@@ -10,6 +10,7 @@ export default class AddItem extends Component {
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.saveItem = this.saveItem.bind(this);
     this.newItem = this.newItem.bind(this);
+    this.adjustTextareaHeight = this.adjustTextareaHeight.bind(this);
 
     this.state = {
       currentUser : undefined,
@@ -55,7 +56,13 @@ export default class AddItem extends Component {
   onChangeDescription(e) {
     this.setState({
       description: e.target.value
-    });
+    }, this.adjustTextareaHeight);
+  }
+
+  adjustTextareaHeight() {
+    const textarea = document.getElementById("description");
+    textarea.style.height = "auto"; // Reset the height to recalculate it
+    textarea.style.height = `${textarea.scrollHeight}px`; // Set the height to fit the content
   }
 
   saveItem() {
@@ -124,9 +131,9 @@ export default class AddItem extends Component {
 
             <div className="form-group">
               <label htmlFor="description">Description</label>
-              <input
+              <textarea
                 type="text"
-                className="form-control"
+                className="form-control auto-resize-textarea"
                 id="description"
                 required
                 value={this.state.description}

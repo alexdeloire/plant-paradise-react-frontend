@@ -13,6 +13,7 @@ class Item extends Component {
     this.updatePublished = this.updatePublished.bind(this);
     this.updateItem = this.updateItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.adjustTextareaHeight = this.adjustTextareaHeight.bind(this);
 
     this.state = {
       currentUser : undefined,
@@ -70,7 +71,13 @@ class Item extends Component {
         ...prevState.currentItem,
         description: description
       }
-    }));
+    }), this.adjustTextareaHeight);
+  }
+
+  adjustTextareaHeight() {
+    const textarea = document.getElementById("description");
+    textarea.style.height = "auto"; // Reset the height to recalculate it
+    textarea.style.height = `${textarea.scrollHeight}px`; // Set the height to fit the content
   }
 
   getItem(id) {
@@ -78,7 +85,7 @@ class Item extends Component {
       .then(response => {
         this.setState({
           currentItem: response.data
-        });
+        }, this.adjustTextareaHeight);
         console.log(response.data);
       })
       .catch(e => {
@@ -180,9 +187,9 @@ class Item extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="description">Description</label>
-                <input
+                <textarea
                   type="text"
-                  className="form-control"
+                  className="form-control auto-resize-textarea"
                   id="description"
                   value={currentItem.description}
                   onChange={this.onChangeDescription}
@@ -214,17 +221,17 @@ class Item extends Component {
                 Verify
               </button>
             )}
-            </div>
-            ) : (
-              <div></div>
-            )}
-
             <button
               className="btn btn-danger mr-2 mb-2"
               onClick={this.deleteItem}
             >
               Delete
             </button>
+            </div>
+            ) : (
+              <div></div>
+            )}
+
 
             <button
               type="submit"
