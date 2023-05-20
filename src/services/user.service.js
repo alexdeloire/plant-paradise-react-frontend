@@ -21,8 +21,8 @@ class UserService {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
 
-  getAllUsers() {
-    return axios.get(API_URL + 'users', { headers: authHeader() });
+  getAllUsers(params) {
+    return axios.get(API_URL + 'users', { params, headers: authHeader() });
   }
 
   updateRoles(username, roles) {
