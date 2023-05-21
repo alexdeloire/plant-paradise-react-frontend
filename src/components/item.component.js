@@ -3,6 +3,8 @@ import { Navigate } from "react-router-dom";
 import ItemDataService from "../services/item.service";
 import { withRouter } from '../common/with-router';
 import AuthService from "../services/auth.service";
+import BiotopeService from "../services/biotope.service";
+import FamilyService from "../services/family.service";
 
 class Item extends Component {
   constructor(props) {
@@ -14,9 +16,11 @@ class Item extends Component {
     this.updateItem = this.updateItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.adjustTextareaHeight = this.adjustTextareaHeight.bind(this);
+    this.getBiotope = this.getBiotope.bind(this);
+    this.getFamily = this.getFamily.bind(this);
 
     this.state = {
-      currentUser : undefined,
+      currentUser: undefined,
       isModerator: false,
       isAdmin: false,
       redirect: null,
@@ -25,25 +29,29 @@ class Item extends Component {
         id: null,
         title: "",
         description: "",
-        published: false
+        published: false,
+        biotope: null,
+        family: null
       },
+      biotopes: [],
+      families: [],
       message: ""
     };
   }
 
   componentDidMount() {
-
     const user = AuthService.getCurrentUser();
 
     if (user) {
       this.setState({
         currentUser: user,
         isModerator: user.roles.includes("ROLE_MODERATOR"),
-        isAdmin: user.roles.includes("ROLE_ADMIN"),
+        isAdmin: user.roles.includes("ROLE_ADMIN")
       });
       this.getItem(this.props.router.params.id);
-    }
-    else{
+      this.getBiotope();
+      this.getFamily();
+    } else {
       this.setState({
         redirect: "/login"
       });
@@ -53,19 +61,17 @@ class Item extends Component {
   onChangeTitle(e) {
     const title = e.target.value;
 
-    this.setState(function(prevState) {
-      return {
-        currentItem: {
-          ...prevState.currentItem,
-          title: title
-        }
-      };
-    });
+    this.setState(prevState => ({
+      currentItem: {
+        ...prevState.currentItem,
+        title: title
+      }
+    }));
   }
 
   onChangeDescription(e) {
     const description = e.target.value;
-    
+
     this.setState(prevState => ({
       currentItem: {
         ...prevState.currentItem,
@@ -85,12 +91,49 @@ class Item extends Component {
       .then(response => {
         this.setState({
           currentItem: response.data
-        }, this.adjustTextareaHeight);
+        }, () =>{
+        this.setSelectedValue("biotope", this.state.currentItem.biotope);
+        this.setSelectedValue("family", this.state.currentItem.family);
+        this.adjustTextareaHeight();
+        console.log(response.data);
+        });
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+  getBiotope() {
+    BiotopeService.getAll()
+      .then(response => {
+        this.setState({
+          biotopes: response.data
+        });
         console.log(response.data);
       })
       .catch(e => {
         console.log(e);
       });
+  }
+
+  getFamily() {
+    FamilyService.getAll()
+      .then(response => {
+        this.setState({
+          families: response.data
+        });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+  setSelectedValue(selectId, value) {
+    const selectElement = document.getElementById(selectId);
+    if (selectElement) {
+      selectElement.value = value;
+    }
   }
 
   updatePublished(status) {
@@ -118,23 +161,19 @@ class Item extends Component {
   }
 
   updateItem() {
-    // When we update the item we set the published status to false
-    // because we want to review the item before publishing it again
-    // (if it was published before)
     var data = {
       id: this.state.currentItem.id,
       title: this.state.currentItem.title,
       description: this.state.currentItem.description,
-      published: false
+      published: false,
+      biotope: this.state.currentItem.biotope,
+      family: this.state.currentItem.family
     };
 
-    ItemDataService.update(
-      this.state.currentItem.id,
-      data
-    )
+    ItemDataService.update(this.state.currentItem.id, data)
       .then(response => {
         console.log(response.data);
-        this.setState( prevState => ({
+        this.setState(prevState => ({
           currentItem: {
             ...prevState.currentItem,
             published: false
@@ -147,7 +186,7 @@ class Item extends Component {
       });
   }
 
-  deleteItem() {    
+  deleteItem() {
     ItemDataService.delete(this.state.currentItem.id)
       .then(response => {
         console.log(response.data);
@@ -159,15 +198,11 @@ class Item extends Component {
   }
 
   render() {
-
     if (this.state.redirect) {
-      return <Navigate to={this.state.redirect} />
+      return <Navigate to={this.state.redirect} />;
     }
 
-    const { currentItem,
-    isAdmin,
-    isModerator
-    } = this.state;
+    const { currentItem, isAdmin, isModerator } = this.state;
 
     return (
       <div>
@@ -186,6 +221,48 @@ class Item extends Component {
                 />
               </div>
               <div className="form-group">
+                <label htmlFor="biotope">Biotope</label>
+                <select
+                  className="form-control"
+                  id="biotope"
+                  value={currentItem.biotope}
+                  onChange={(e) => this.setState(prevState => ({
+                    currentItem: {
+                      ...prevState.currentItem,
+                      biotope: e.target.value
+                    }
+                  }))}
+                >
+                  <option value="">Select a biotope</option>
+                  {this.state.biotopes.map((biotope) => (
+                    <option key={biotope._id} value={biotope._id}>
+                      {biotope.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="family">Family</label>
+                <select
+                  className="form-control"
+                  id="family"
+                  value={currentItem.family}
+                  onChange={(e) => this.setState(prevState => ({
+                    currentItem: {
+                      ...prevState.currentItem,
+                      family: e.target.value
+                    }
+                  }))}
+                >
+                  <option value="">Select a family</option>
+                  {this.state.families.map((family) => (
+                    <option key={family._id} value={family._id}>
+                      {family.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group">
                 <label htmlFor="description">Description</label>
                 <textarea
                   type="text"
@@ -195,7 +272,6 @@ class Item extends Component {
                   onChange={this.onChangeDescription}
                 />
               </div>
-
               <div className="form-group">
                 <label>
                   <strong>Status:</strong>
@@ -205,33 +281,32 @@ class Item extends Component {
             </form>
 
             {isModerator || isAdmin ? (
-              <div className = "publish-btn">
-            {currentItem.published ? (
-              <button
-                className="btn btn-primary mr-2 mb-2"
-                onClick={() => this.updatePublished(false)}
-              >
-                UnVerify
-              </button>
-            ) : (
-              <button
-                className="btn btn-primary mr-2 mb-2"
-                onClick={() => this.updatePublished(true)}
-              >
-                Verify
-              </button>
-            )}
-            <button
-              className="btn btn-danger mr-2 mb-2"
-              onClick={this.deleteItem}
-            >
-              Delete
-            </button>
-            </div>
+              <div className="publish-btn">
+                {currentItem.published ? (
+                  <button
+                    className="btn btn-primary mr-2 mb-2"
+                    onClick={() => this.updatePublished(false)}
+                  >
+                    UnVerify
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-primary mr-2 mb-2"
+                    onClick={() => this.updatePublished(true)}
+                  >
+                    Verify
+                  </button>
+                )}
+                <button
+                  className="btn btn-danger mr-2 mb-2"
+                  onClick={this.deleteItem}
+                >
+                  Delete
+                </button>
+              </div>
             ) : (
               <div></div>
             )}
-
 
             <button
               type="submit"
