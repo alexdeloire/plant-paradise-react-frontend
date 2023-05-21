@@ -272,14 +272,6 @@ export default class BoardAdmin extends Component {
               ))}
           </ul>
           
-          {(isModerator || isAdmin) && (
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.updateRolesUser}
-          >
-            Do not press
-          </button>
-          )}
         </div>
         <div className="col-md-6 display-item">
           {currentUserSelected ? (

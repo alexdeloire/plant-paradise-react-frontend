@@ -136,6 +136,8 @@ label {
   flex-direction: column !important;
   flex-wrap: wrap !important;
   justify-content: center !important;
+  max-width: 85% !important;
+  margin: auto !important;
 }
 
 /*All children of homepage*/
@@ -221,8 +223,24 @@ label {
   min-height: 38px; /* Set a minimum height to prevent collapsing */
 }
 
+.family-biotope-pad{
+  padding: 20px !important;
+}
 
 
+.homepage-image{
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  border-radius: 10px !important;
+}
+
+.homepage-p{
+  font-size: large !important;
+}
+
+.homepage-title{
+  padding: 20px !important;
+}
 
 
 

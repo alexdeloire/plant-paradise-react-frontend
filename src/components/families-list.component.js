@@ -73,8 +73,8 @@ export default class FamilyList extends Component {
 
   saveFamily() {
     var data = {
-      name: "Sample Family",
-      description: "Lorem ipsum dolor sit amet"
+      name: "Flowers and No Fruit",
+      description: "Plants that have flowers but no fruit belong to a group known as angiosperms or flowering plants. These plants are characterized by their ability to produce beautiful and diverse flowers, which serve as the reproductive structures. Unlike gymnosperms, angiosperms have enclosed seeds within protective structures called ovaries, which develop into fruits after successful pollination and fertilization. However, there are certain instances where angiosperms produce flowers that do not develop into fruits. This can occur due to factors such as incomplete pollination, lack of fertilization, or intentional cultivation practices. Examples of angiosperms that exhibit this characteristic include many ornamental flowers grown for their aesthetic appeal, such as roses, tulips, lilies, and orchids. While these plants may not bear fruits, their flowers still captivate us with their vibrant colors, intricate structures, and enticing fragrances. The presence of flowers in these plants attracts pollinators and plays a crucial role in the reproduction and survival of angiosperms."
     };
 
     FamilyDataService.create(data)
@@ -104,30 +104,34 @@ export default class FamilyList extends Component {
     } = this.state;
 
     return (
-      <div className="container">
+      <div className="container family-biotope-pad">
         <div className="row">
           <div className="col-md-12">
             <h4>Families List</h4>
 
-            <div className="card-columns">
-              {families.map(family => (
-                <div className="card" key={family._id}>
-                  <img
-                  src={require(`../assets/${family.name}.jpg`)}
-                  className="card-img-top"
-                  alt={family.name}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{family.name}</h5>
-                    <p className="card-text">{family.description}</p>
+              {families.map((family) => (
+                <div className="card mb-3" key={family._id}>
+                  <div className="row g-0 align-items-center">
+                    <div className="col-md-4">
+                      <img
+                        src={require(`../assets/${family.name}.jpg`)}
+                        className="card-img"
+                        alt={family.name}
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h5 className="card-title">{family.name}</h5>
+                        <p className="card-text">{family.description}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
-            </div>
           </div>
         </div>
 
-        {/* Add Family Button */}
+        {/* Add Family Button 
         <div className="row">
           <div className="col-md-12">
             <button
@@ -139,6 +143,7 @@ export default class FamilyList extends Component {
             </button>
           </div>
         </div>
+      */}
       </div>
     );
   }

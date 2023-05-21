@@ -283,6 +283,18 @@ export default class BoardModerator extends Component {
               </div>
               <div>
                 <label>
+                  <strong>Biotope:</strong>
+                </label>{" "}
+                {currentItem.biotope.name}
+              </div>
+              <div>
+                <label>
+                  <strong>Family:</strong>
+                </label>{" "}
+                {currentItem.family.name}
+              </div>
+              <div>
+                <label>
                   <strong>Description:</strong>
                 </label>{" "}
                 {currentItem.description}

@@ -33,13 +33,36 @@ export default class Home extends Component {
   render() {
     return (
       <div className="homepage">
-          <h1>Welcome to Plant Paradise!</h1>
-          <p>Looking for a new hobby? In dire need of some gardening information? </p>
-          <p>Plant Paradise is the right place for you! Explore the world of plants. What are you waiting for?</p>
-        <Link to={"/items"} className="get-started">
-            Get Started
-          </Link>
+        <div className="row">
+          <h1 className="homepage-title">Welcome to Plant Paradise!</h1>
+        </div>
+        <div className="row align-items-center">
+          <div className="col-md-6">
+            <p className="homepage-p">This is our plant encyclopedia, a delightful and community-driven project where plant enthusiasts from around the world can share their knowledge and passion for flora!</p>
+            <p className="homepage-p">Our platform functions like a Wikipedia for plants, where users have the power to add, edit, and expand the ever-growing collection of plant entries.</p>
+            <p className="homepage-p">We believe that the collective wisdom of our plant-loving community is the key to building an extensive and reliable resource. Every contribution is valuable, and our team of dedicated moderators ensures the accuracy and quality of the information shared.</p>
+          </div>
+          <div className="col-md-6">
+            <img
+              src={require("../assets/homepage.jpg")}
+              className="img-fluid homepage-image"
+              alt="Plant Paradise"
+              />
+          </div>
+        </div>
+            <div className="row">
+              <div className="col-md-12">
+              <p className="homepage-p">So, whether you're a gardening aficionado, a botany enthusiast, or simply have a love for the green world around us, join us in this jolly adventure of exploring, documenting, and celebrating the wonders of plants. Together, we can create a comprehensive and joyful resource that inspires and educates plant lovers everywhere.</p>
+              <p className="homepage-p">Happy browsing and happy gardening!</p>
+              </div>
+            </div>
+            <div className="row">
+            <Link to={"/items"} className="get-started">
+              Get Started
+            </Link>
+            </div>
       </div>
+
     );
   }
 }
