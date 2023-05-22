@@ -74,7 +74,7 @@ export default class FamilyList extends Component {
   saveFamily() {
     var data = {
       name: "Flowers and No Fruit",
-      description: "Plants that have flowers but no fruit belong to a group known as angiosperms or flowering plants. These plants are characterized by their ability to produce beautiful and diverse flowers, which serve as the reproductive structures. Unlike gymnosperms, angiosperms have enclosed seeds within protective structures called ovaries, which develop into fruits after successful pollination and fertilization. However, there are certain instances where angiosperms produce flowers that do not develop into fruits. This can occur due to factors such as incomplete pollination, lack of fertilization, or intentional cultivation practices. Examples of angiosperms that exhibit this characteristic include many ornamental flowers grown for their aesthetic appeal, such as roses, tulips, lilies, and orchids. While these plants may not bear fruits, their flowers still captivate us with their vibrant colors, intricate structures, and enticing fragrances. The presence of flowers in these plants attracts pollinators and plays a crucial role in the reproduction and survival of angiosperms."
+      description: "family"
     };
 
     FamilyDataService.create(data)

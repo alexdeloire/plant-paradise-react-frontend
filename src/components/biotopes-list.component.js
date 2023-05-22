@@ -77,7 +77,7 @@ export default class BiotopeList extends Component {
     saveBiotope() {
         var data = {
             name: "Forest",
-            description: "The forest biotope is a lush and vibrant ecosystem characterized by an abundance of trees, diverse plant life, and a rich array of wildlife. Forests are teeming with life and provide a multitude of essential ecological services. Trees dominate the landscape, forming a canopy that shades the forest floor and creates a unique microclimate. Underneath, a variety of plant species thrive, ranging from ferns, shrubs, and wildflowers to mosses and fungi. Forest plants have evolved strategies for competing for light, nutrients, and space, leading to complex and intricate ecosystems. These plants play a crucial role in oxygen production, carbon sequestration, soil stabilization, and providing habitats for countless animal species. Forests are not only a source of natural beauty but also offer valuable resources, such as timber, medicinal plants, and recreational spaces. They are vital for maintaining the health of our planet and are often referred to as the 'lungs of the Earth' due to their significant contribution to global oxygen levels."
+            description: "biotope"
         };
 
         BiotopeDataService.create(data)
