@@ -40,6 +40,7 @@ export default class BoardAdmin extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
     const user = AuthService.getCurrentUser();
 
     if (user) {

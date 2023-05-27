@@ -142,9 +142,7 @@ label {
 
 /*All children of homepage*/
 .homepage > * {
-  margin: auto !important;
   margin-top: 20px !important;
-  text-align: center !important;
 }
 
 .get-started{
@@ -158,8 +156,14 @@ label {
   padding-bottom: 20px !important;
   margin: auto !important;
   margin-top: 20px !important;
+  margin-bottom: 40px !important;
   /*Get rid of the underline*/
   text-decoration: none !important;
+  transition: background-color .15s ease-in-out;
+}
+
+.get-started:hover{
+  background-color: #263A29 !important;
 }
 
 .add-new-item{
@@ -180,6 +184,13 @@ label {
 
 .edit-btn-list{
   margin-top: 10px !important;
+  background-color: #285430 !important;
+  border-color: #285430 !important;
+}
+
+.edit-btn-list:hover{
+  background-color: #263A29 !important;
+  border-color: #263A29 !important;
 }
 
 .display-item{
@@ -214,7 +225,7 @@ label {
 }
 
 .mainthing{
-  min-height: 1500px;
+  min-height: 800px;
 }
 
 .auto-resize-textarea {
@@ -240,10 +251,75 @@ label {
 
 .homepage-title{
   padding: 20px !important;
+  text-align: center !important;
 }
 
+.homepage-text-group{
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
 
+.submit-success-text{
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  padding: 20px !important;
+  margin: auto !important;
+  text-align: center !important;
+}
 
+.submit-success-button{
+  display: flex !important;
+  justify-content: center !important; 
+}
+
+.list-group-item:hover{
+  cursor: pointer !important;
+}
+
+.add-button{
+  background-color: #285430 !important;
+  border-color: #285430 !important;
+  transition: background-color .15s ease-in-out;
+}
+
+.add-button:hover{
+  background-color: #263A29 !important;
+  border-color: #263A29 !important;
+}
+
+.unverify-button{
+  background-color: #EA5C2B !important;
+  border-color: #EA5C2B !important;
+  transition: background-color .15s ease-in-out;
+}
+
+.unverify-button:hover{
+  background-color: #BB371A !important;
+  border-color: #BB371A !important;
+}
+
+.verify-button{
+  background-color: #28B5B5 !important;
+  border-color: #28B5B5 !important;
+  transition: background-color .15s ease-in-out;
+}
+
+.verify-button:hover{
+  background-color: #4B778D !important;
+  border-color: #4B778D !important;
+}
+
+.delete-button{
+  background-color: #B33030 !important;
+  border-color: #B33030 !important;
+  transition: background-color .15s ease-in-out;
+}
+
+.delete-button:hover{
+  background-color: #632626 !important;
+  border-color: #632626 !important;
+}
 
 
 /*Classes for the grid system*/

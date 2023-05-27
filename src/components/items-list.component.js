@@ -35,6 +35,7 @@ export default class ItemsList extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
     const user = AuthService.getCurrentUser();
 
     if (user) {
@@ -234,7 +235,7 @@ export default class ItemsList extends Component {
           
           {(isModerator || isAdmin) && (
           <button
-            className="m-3 btn btn-sm btn-danger"
+            className="m-3 btn btn-sm btn-danger delete-button"
             onClick={this.removeAllItems}
           >
             Remove All
@@ -247,7 +248,7 @@ export default class ItemsList extends Component {
               <h4>Plant</h4>
               <div>
                 <label>
-                  <strong>Title:</strong>
+                  <strong>Name:</strong>
                 </label>{" "}
                 {currentItem.title}
               </div>
@@ -286,7 +287,7 @@ export default class ItemsList extends Component {
           ) : (
             <div>
               <br />
-              <p>Don't be shy, select a plant!</p>
+              <p>Don't be shy, <strong>select</strong> a plant!</p>
             </div>
           )}
         </div>

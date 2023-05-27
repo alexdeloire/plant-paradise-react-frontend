@@ -124,6 +124,10 @@ class Register extends Component {
     }
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }
+
   render() {
     return (
       <div className="wrapper-for-everything">
@@ -180,7 +184,7 @@ class Register extends Component {
                   </div>
 
                   <div className="form-group">
-                    <button className="btn btn-primary btn-block">Sign Up</button>
+                    <button className="btn btn-primary btn-block add-button">Sign Up</button>
                   </div>
                 </div>
               )}

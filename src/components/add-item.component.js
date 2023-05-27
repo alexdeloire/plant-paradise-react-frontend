@@ -39,6 +39,7 @@ export default class AddItem extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
     const user = AuthService.getCurrentUser();
 
     if (user) {
@@ -165,10 +166,12 @@ export default class AddItem extends Component {
       <div className="submit-form">
         {submitted ? (
           <div>
-            <h4>You submitted successfully!</h4>
-            <button className="btn btn-success" onClick={this.newItem}>
-              Add
+            <h4 className="submit-success-text">You submitted successfully!</h4>
+            <div className="submit-success-button">
+            <button className="btn btn-success add-button" onClick={this.newItem}>
+              Add another plant
             </button>
+            </div>
           </div>
         ) : (
           <div>
@@ -234,7 +237,7 @@ export default class AddItem extends Component {
               />
             </div>
 
-            <button onClick={this.saveItem} className="btn btn-success">
+            <button onClick={this.saveItem} className="btn btn-success add-button">
               Submit
             </button>
           </div>

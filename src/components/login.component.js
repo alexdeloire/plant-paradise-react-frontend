@@ -82,6 +82,10 @@ class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }
+
   render() {
     return (
       <div className="wrapper-for-everything">
@@ -125,7 +129,7 @@ class Login extends Component {
 
               <div className="form-group">
                 <button
-                  className="btn btn-primary btn-block"
+                  className="btn btn-primary btn-block add-button"
                   disabled={this.state.loading}
                 >
                   {this.state.loading && (

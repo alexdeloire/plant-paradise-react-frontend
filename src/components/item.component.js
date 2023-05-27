@@ -40,6 +40,7 @@ class Item extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
     const user = AuthService.getCurrentUser();
 
     if (user) {
@@ -284,21 +285,21 @@ class Item extends Component {
               <div className="publish-btn">
                 {currentItem.published ? (
                   <button
-                    className="btn btn-primary mr-2 mb-2"
+                    className="btn btn-primary mr-2 mb-2 unverify-button"
                     onClick={() => this.updatePublished(false)}
                   >
                     UnVerify
                   </button>
                 ) : (
                   <button
-                    className="btn btn-primary mr-2 mb-2"
+                    className="btn btn-primary mr-2 mb-2 verify-button"
                     onClick={() => this.updatePublished(true)}
                   >
                     Verify
                   </button>
                 )}
                 <button
-                  className="btn btn-danger mr-2 mb-2"
+                  className="btn btn-danger mr-2 mb-2 delete-button"
                   onClick={this.deleteItem}
                 >
                   Delete
@@ -310,7 +311,7 @@ class Item extends Component {
 
             <button
               type="submit"
-              className="btn btn-success mr-2 mb-2"
+              className="btn btn-success mr-2 mb-2 add-button"
               onClick={this.updateItem}
             >
               Update

@@ -14,6 +14,7 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
     const currentUser = AuthService.getCurrentUser();
 
     if (!currentUser) this.setState({ redirect: "/login" });
