@@ -137,7 +137,6 @@ export default class BiotopeList extends Component {
           </div>
         </div>
         {/* Add Biotope Button 
-      A quick button that lets me add a new biotope to the database
         <div className="row">
         <div className="col-md-12">
              <button
