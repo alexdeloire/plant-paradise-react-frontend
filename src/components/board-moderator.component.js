@@ -263,7 +263,7 @@ export default class BoardModerator extends Component {
               ))}
           </ul>
           
-          {(isModerator || isAdmin) && (
+          {(isAdmin) && (
           <button
             className="m-3 btn btn-sm btn-danger delete-button"
             onClick={this.removeAllItems}
