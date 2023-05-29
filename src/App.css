@@ -321,6 +321,34 @@ label {
   border-color: #632626 !important;
 }
 
+.makemod-button{
+  margin-top: 10px !important;
+  background-color: #28B5B5 !important;
+  border-color: #28B5B5 !important;
+  transition: background-color .15s ease-in-out;
+}
+
+.makemod-button:hover{
+  background-color: #4B778D !important;
+  border-color: #4B778D !important;
+}
+
+.removemod-button{
+  margin-top: 10px !important;
+  background-color: #EA5C2B !important;
+  border-color: #EA5C2B !important;
+  transition: background-color .15s ease-in-out;
+}
+
+.removemod-button:hover{
+  background-color: #BB371A !important;
+  border-color: #BB371A !important;
+}
+
+.profile-email{
+  margin-top: 20px !important;
+}
+
 
 /*Classes for the grid system*/
 /* Not used in this project */

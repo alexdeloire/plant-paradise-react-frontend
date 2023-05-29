@@ -317,7 +317,7 @@ export default class BoardModerator extends Component {
           ) : (
             <div>
               <br />
-              <p>Select a post to review.</p>
+              <p><strong>Select</strong> a post to review.</p>
             </div>
           )}
         </div>

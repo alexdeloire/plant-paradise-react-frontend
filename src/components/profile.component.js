@@ -47,7 +47,7 @@ export default class Profile extends Component {
           {currentUser.id}
         </p>
         */}
-        <p>
+        <p className="profile-email">
           <strong>Email:</strong>{" "}
           {currentUser.email}
         </p>
@@ -56,6 +56,9 @@ export default class Profile extends Component {
           {currentUser.roles &&
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
         </ul>
+        { !currentUser.roles.includes("ROLE_MODERATOR") ? 
+        <p>Want to become a moderator? Send us your CV at <strong>alexandre.deloire01@etu.umontpellier.fr</strong></p>
+         : null} 
       </div>: null}
       </div>
     );

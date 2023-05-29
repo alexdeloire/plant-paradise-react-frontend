@@ -301,14 +301,14 @@ export default class BoardAdmin extends Component {
               <div className = "publish-btn">
             {currentUserSelected.roles.includes("moderator") ? (
               <button
-                className="btn btn-md btn-primary edit-btn-list"
+                className="btn btn-md btn-primary removemod-button"
                 onClick={() => this.updateRolesUser(["user"])}
               >
                 Remove Moderator Status
               </button>
             ) : (
               <button
-                className="btn btn-md btn-primary edit-btn-list"
+                className="btn btn-md btn-primary makemod-button"
                 onClick={() => this.updateRolesUser(["user", "moderator"])}
               >
                 Add Moderator Status
@@ -320,7 +320,7 @@ export default class BoardAdmin extends Component {
           ) : (
             <div>
               <br />
-              <p>Select a user.</p>
+              <p><strong>Select</strong> a user.</p>
             </div>
           )}
         </div>

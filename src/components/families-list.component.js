@@ -74,7 +74,7 @@ export default class FamilyList extends Component {
 
   saveFamily() {
     var data = {
-      name: "Flowers and No Fruit",
+      name: "Flowers and Fruit",
       description: "family"
     };
 

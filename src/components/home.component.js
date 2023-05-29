@@ -40,7 +40,6 @@ export default class Home extends Component {
             <h1 className="homepage-title">Welcome to Plant Paradise!</h1>
             <p className="homepage-p">Our platform functions like a Wikipedia for plants, where users have the power to add, edit, and expand the ever-growing collection of plant entries.</p>
             <p className="homepage-p">Our team of dedicated moderators ensures the accuracy and quality of the information shared.</p>
-            <p className="homepage-p">Happy browsing and happy gardening!</p>
             <Link to={"/items"} className="get-started">
               Get Started
             </Link>
