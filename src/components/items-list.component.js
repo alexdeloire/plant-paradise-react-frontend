@@ -25,6 +25,8 @@ export default class ItemsList extends Component {
       currentItem: null,
       currentIndex: -1,
       searchTitle: "",
+      // Indicates if the user has changed the search bar
+      hasChanged: false,
 
       page: 1,
       count: 0,
@@ -58,6 +60,7 @@ export default class ItemsList extends Component {
 
     this.setState({
       searchTitle: searchTitle,
+      hasChanged: true
     });
   }
 
@@ -81,7 +84,17 @@ export default class ItemsList extends Component {
 
   retrieveItems() {
     const { searchTitle, page, pageSize } = this.state;
-    const params = this.getRequestParams(searchTitle, page, pageSize);
+
+    // If the user has searched for something, we want to go back to the first page
+    let pageToSend = page;
+    if (this.state.hasChanged) {
+      pageToSend = 1;
+      this.setState({
+        hasChanged: false
+      });
+    }
+
+    const params = this.getRequestParams(searchTitle, pageToSend, pageSize);
 
     ItemDataService.getAll(params)
       .then((response) => {
@@ -90,6 +103,7 @@ export default class ItemsList extends Component {
         this.setState({
           items: items,
           count: totalPages,
+          page : pageToSend,
         });
         console.log(response.data);
       })
